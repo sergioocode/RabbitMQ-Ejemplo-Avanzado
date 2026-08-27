@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqExample.Tests", "tests\RabbitMqExample.Tests\RabbitMqExample.Tests.csproj", "{55BC3633-F3B3-4C17-8A40-18274E0C01DB}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{55BC3633-F3B3-4C17-8A40-18274E0C01DB}.Release|x64.Build.0 = Release|Any CPU
 		{55BC3633-F3B3-4C17-8A40-18274E0C01DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{55BC3633-F3B3-4C17-8A40-18274E0C01DB}.Release|x86.Build.0 = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|x64.Build.0 = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Debug|x86.Build.0 = Debug|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|x64.ActiveCfg = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|x64.Build.0 = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|x86.ActiveCfg = Release|Any CPU
+		{12DD1EDA-3271-42A5-B625-05F1D5CDABC8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

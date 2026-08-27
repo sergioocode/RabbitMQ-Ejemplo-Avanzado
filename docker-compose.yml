@@ -1,0 +1,45 @@
+﻿name: rabbitmq-advanced-example
+
+services:
+  rabbitmq:
+    image: rabbitmq:4.3.4-management-alpine
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: app
+      RABBITMQ_DEFAULT_PASS: app
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_port_connectivity"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
+
+  weather:
+    image: ${DOCKER_REGISTRY-}rabbitmqexampleweatherapi
+    build:
+      context: .
+      dockerfile: src/RabbitMqExample.Weather.Api/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: on-failure
+
+  gateway:
+    image: ${DOCKER_REGISTRY-}rabbitmqexamplegatewayapi
+    build:
+      context: .
+      dockerfile: src/RabbitMqExample.Gateway.Api/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      weather:
+        condition: service_started
+    restart: on-failure
+
+volumes:
+  rabbitmq-data:

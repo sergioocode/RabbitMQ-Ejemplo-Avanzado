@@ -1,0 +1,17 @@
+﻿{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchServiceName": "gateway",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchUrl": "http://localhost:8080",
+      "serviceActions": {
+        "rabbitmq": "StartWithoutDebugging",
+        "weather": "StartDebugging",
+        "gateway": "StartDebugging"
+      }
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json"
+}

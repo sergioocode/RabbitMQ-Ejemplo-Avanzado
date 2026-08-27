@@ -14,14 +14,14 @@ Ejemplo de comunicación RPC mediante RabbitMQ. Un Gateway recibe una petición 
 | `RabbitMqExample.Weather.Api` | Consume `rpc.weather` y publica la respuesta. |
 | `RabbitMqExample.Tests` | Pruebas de la lógica meteorológica. |
 
-## Ejecutar
+## Ejecutar desde Visual Studio
 
 Requisitos: .NET SDK 10, Visual Studio y Docker Desktop.
 
-Inicia RabbitMQ desde la raíz de la solución:
+Para ejecutar las aplicaciones desde Visual Studio, inicia primero RabbitMQ:
 
 ```powershell
-docker compose up -d
+docker compose up -d rabbitmq
 ```
 
 El panel RabbitMQ Management queda disponible en `http://localhost:15672`.
@@ -43,6 +43,12 @@ Resultado esperado:
 
 Los archivos `.http` también permiten consultar `/health` en ambos servicios.
 
+## Ejecutar los contenedores desde Visual Studio
+
+Selecciona `docker-compose` como proyecto de inicio, elige su perfil `Docker Compose` y pulsa F5. Visual Studio construye los Dockerfiles, inicia RabbitMQ, Gateway y Weather, y conecta el depurador a las dos aplicaciones .NET.
+
+Para probar este modo, usa los archivos `.http` de Gateway y Weather.
+
 ## Comportamiento RPC
 
 `rpc.weather` es una cola duradera para solicitudes. El Gateway crea una cola temporal `amq.gen-...` para recibir respuestas.
@@ -62,7 +68,27 @@ Weather utiliza ACK manual después de publicar la respuesta y `prefetchCount: 1
 ```powershell
 docker compose down
 ```
-
 El volumen conserva los datos del broker.
 
 El ejemplo básico está en [RabbitMQ-Ejemplo-Basico](https://github.com/sergioocode/RabbitMQ-Ejemplo-Basico).
+
+## Ejecutar sin Visual Studio
+
+```powershell
+docker compose up --build -d
+docker compose logs -f gateway weather rabbitmq
+```
+
+Compose inicia los tres servicios:
+
+| Dirección | Uso |
+| --- | --- |
+| `http://localhost:8080` | Gateway API. |
+| `http://localhost:8081` | Weather API y `/health`. |
+| `http://localhost:15672` | RabbitMQ Management (`app` / `app`). |
+
+Para probar este modo, usa los archivos `.http` de Gateway y Weather.
+
+```powershell
+docker compose down
+```
