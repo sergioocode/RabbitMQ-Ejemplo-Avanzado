@@ -1,0 +1,10 @@
+﻿root = true
+
+[*]
+charset = utf-8-bom
+
+[*.cs]
+
+# CA1873: evita advertir por argumentos evaluados antes de comprobar
+# si el nivel de logging correspondiente está habilitado.
+dotnet_diagnostic.CA1873.severity = none

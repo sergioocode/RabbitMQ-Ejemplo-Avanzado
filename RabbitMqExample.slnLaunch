@@ -1,0 +1,15 @@
+﻿[
+  {
+    "Name": "Gateway + Weather",
+    "Projects": [
+      {
+        "Path": "src\\RabbitMqExample.Gateway.Api\\RabbitMqExample.Gateway.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\RabbitMqExample.Weather.Api\\RabbitMqExample.Weather.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
